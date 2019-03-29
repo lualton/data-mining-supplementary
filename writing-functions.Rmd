@@ -1,0 +1,197 @@
+---
+title: "writing-functions-in-r"
+author: "Alton Lu"
+date: "March 27, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Breaking down a function
+
+In R Programming:
+
+1. Everything that exists is an object. Dataframe, vector, variables are all objects.
+
+2. Everything that happens or does something is a function call.
+
+When you use max(x), max() is a function call. By calling max(), something happens to the object x.
+
+Every function is made of three parts:
+
+  1. Input. Also called arguments or formals. For the max() function, this would just be a vector of numbers as input. 
+  2. Body. This is whatever the function does. The max() function finds the largest number.
+  3. Output. Also called a return value. 
+
+
+
+```{r data}
+# Do not change this code
+x1 <- c(1, 2, 3, 4, 5, 20)
+x2 <- c(3, -20, 4, 5, 6, 10)
+```
+
+## 2. Find mins and maxes
+
+Find the min and max of the vector x1
+
+```{r}
+# Code here
+```
+
+## 3. Write a function 
+
+
+Write a function min_max() that can print either of following:
+
+  - "The minimum of the data is x"
+  - "The maximum of the data is x"
+
+Function inputs:
+
+  1. A vector of numbers (x1 or x2)
+  2. A way of specifying if you want to find the min or the max
+
+Output:
+
+  1. If you want the max, the function should print: "The maximum of the data is x"
+  2. If you want the min, the function should print: "The minimum of the data is x"
+  
+
+```{r}
+min_max <- function(){
+  # Modify Code here
+  
+}
+
+min_max()
+
+```
+
+## 4. Write a custom max function
+
+Write a function called custom_max() that finds the max of a vector without using the max() function. 
+
+Inputs:
+
+  - A single vector of numbers
+  
+Outputs:
+
+  - 20 if using vector x1
+  - 10 if using vector x2
+
+
+```{r}
+custom_max <- function(values){
+  # Modify Code Here
+}
+
+custom_max(x2)
+```
+
+
+## 5. Create Test Data
+
+Create a function test_split() that creates a test set of a dataframe.
+
+Inputs:
+
+  1. Dataframe or matrix
+  2. p parameter that specifies the proportion of the data considered the test set. This should be a number between 0 and 1. p=.5 means that 50% of the data will be considered the test set
+
+Output:
+
+  1. A dataframe of size p*nrow(data) that can be used as a test data set
+
+Notes:
+
+  1. The test set should be random. That means every time we run your function, it should return a different test set. 
+  2. For p = 0.25, the test data output should have 8 rows. Check with nrow(output)
+
+
+```{r}
+mtcars <- mtcars # Don't change this line
+set.seed(1) # Don't change this line
+
+test_split <- function(data, p){
+  # Modify Code here
+  
+}
+
+
+# Returns the first row
+test_split(mtcars, .25)[1,]
+
+```
+
+
+## 6. Creating Train & Test Data
+
+Create a function that returns a vector of numbers that can be used to split a data into train AND test data
+
+Inputs:
+
+  1. Dataframe or matrix
+  2. p parameter that specifies the proportion of the data considered the test set. This should be a number between 0 and 1. p=.5 means that 50% of the data will be considered the test set
+
+Output:
+
+  1. A vector of indicies that can be used to split a dataframe into train and test
+    Example: output = c(5,1,21,56,12,13)
+
+Notes:
+
+  1. The indicies should be random. Everytime you run, it should produce a different result.
+  2. For p = 0.25, the output vector should have 8 numbers. Check with length(output)
+
+```{r}
+mtcars <- mtcars # Don't change this line
+set.seed(1) # Don't change this line
+
+# This function creates a test split of data
+train_test_split <- function(data, p){
+  # Modify Code Here
+  
+  
+}
+
+# Run train_test split and assign to index_split
+index_split <- train_test_split()
+
+# Split mtcars into train_data and test_data
+
+```
+
+## 7. Looping predictions
+
+Using the previous train_test_split() function, make regression predictions for multiple test sizes on the mtcars dataset. You should calculate the mean squared error of each prediction. Some helper code has been included.
+
+
+Notes:
+
+  1. Our Y of interest is mpg
+  
+  2. You'll want to loop through the different test_sizes and run lm() and predict() on each train and test split
+  
+  3. To calculate residuals, subtract your predictions from the actual data. 
+  
+  4. MSE is calculated as the mean of the squared residuals
+  
+  5. Make sure to print out the MSE at the end of each loop
+
+```{r}
+
+mtcars <- mtcars # Don't change this line
+set.seed(1) # Don't change this line
+
+test_sizes = c(.10, .25, .5) # Don't change this line
+
+
+for(i in test_sizes){
+  # Modify Code
+}
+
+```
